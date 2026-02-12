@@ -1,0 +1,6 @@
+course_id,prereq_id,min_grade
+CS201,CS101,C
+CS301,CS201,C+
+CS401,CS201,B-
+MATH201,MATH101,C
+CS202,MATH101,C

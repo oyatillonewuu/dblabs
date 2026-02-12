@@ -1,0 +1,9 @@
+student_id,name,dept_id,enrollment_year,total_credits,advisor_id
+1,John Anderson,1,2022,30,1
+2,Sarah Parker,1,2022,28,1
+3,Michael Chen,2,2021,75,3
+4,Jessica Taylor,3,2023,15,4
+5,Kevin Rodriguez,NULL,2022,20,NULL
+6,Olivia Martinez,4,2023,12,5
+7,Daniel Kim,5,2022,45,7
+8,Sophia Wilson,1,2021,90,2

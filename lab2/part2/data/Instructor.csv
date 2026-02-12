@@ -1,0 +1,8 @@
+instructor_id,name,dept_id,salary,hire_date
+1,Dr. Alice Smith,1,85000.00,2018-05-15
+2,Dr. Bob Johnson,1,92000.00,2015-08-20
+3,Dr. Carol Williams,2,78000.00,2020-01-10
+4,Dr. David Brown,3,81000.00,2019-03-22
+5,Dr. Emma Davis,4,76000.00,2021-11-05
+7,Dr. Frank Wilson,5,72000.00,2022-02-14
+8,Dr. Grace Lee,NULL,68000.00,2023-08-01

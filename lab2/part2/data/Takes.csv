@@ -1,0 +1,15 @@
+student_id,course_id,semester,year,grade
+1,CS101,Fall,2022,A
+1,CS201,Spring,2023,B+
+1,MATH101,Fall,2022,A-
+2,CS101,Fall,2022,B
+2,CS301,Spring,2023,A
+3,MATH101,Fall,2021,B+
+3,MATH201,Spring,2022,A-
+4,PHYS101,Fall,2023,B+
+6,BIOL101,Fall,2023,A
+7,CHEM101,Fall,2022,B
+8,CS101,Fall,2021,A
+8,CS201,Spring,2022,A
+8,CS301,Fall,2022,A-
+8,MATH101,Fall,2021,B+

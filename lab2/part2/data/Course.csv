@@ -1,0 +1,11 @@
+course_id,title,dept_id,credits,instructor_id
+CS101,Introduction to Programming,1,4,1
+CS201,Data Structures,1,3,2
+CS301,Algorithms,1,3,2
+MATH101,Calculus I,2,4,3
+MATH201,Linear Algebra,2,3,NULL
+PHYS101,Mechanics,3,4,4
+BIOL101,Biology I,4,4,5
+CHEM101,General Chemistry,5,4,7
+CS202,Discrete Mathematics,1,3,NULL
+CS401,Database Systems,1,3,1
