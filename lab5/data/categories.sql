@@ -1,0 +1,16 @@
+INSERT INTO categories (id, name, parent_id) VALUES (1, 'Electronics', NULL);
+INSERT INTO categories (id, name, parent_id) VALUES (2, 'Clothing', NULL);
+INSERT INTO categories (id, name, parent_id) VALUES (3, 'Books', NULL);
+INSERT INTO categories (id, name, parent_id) VALUES (4, 'Home & Garden', NULL);
+INSERT INTO categories (id, name, parent_id) VALUES (5, 'Smartphones', 1);
+INSERT INTO categories (id, name, parent_id) VALUES (6, 'Laptops', 1);
+INSERT INTO categories (id, name, parent_id) VALUES (7, 'TVs', 1);
+INSERT INTO categories (id, name, parent_id) VALUES (8, "Men's Clothing", 2);
+INSERT INTO categories (id, name, parent_id) VALUES (9, "Women's Clothing", 2);
+INSERT INTO categories (id, name, parent_id) VALUES (10, "Kids' Clothing", 2);
+INSERT INTO categories (id, name, parent_id) VALUES (11, 'Fiction', 3);
+INSERT INTO categories (id, name, parent_id) VALUES (12, 'Non-Fiction', 3);
+INSERT INTO categories (id, name, parent_id) VALUES (13, 'Textbooks', 3);
+INSERT INTO categories (id, name, parent_id) VALUES (14, 'Furniture', 4);
+INSERT INTO categories (id, name, parent_id) VALUES (15, 'Decor', 4);
+INSERT INTO categories (id, name, parent_id) VALUES (16, 'Tools', 4);
