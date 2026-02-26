@@ -16,3 +16,9 @@ SELECT
     price,
     discount_by(price, 15) AS discounted_by_15
 FROM products;
+
+-- Task 2.3
+
+SELECT department INTO @ex_dep FROM employees LIMIT 1;
+CALL get_employee_count_by_dep(@ex_dep, @ex_emp_count);
+SELECT @ex_dep AS example_dep_name, @ex_emp_count AS employee_count;
