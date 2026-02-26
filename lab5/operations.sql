@@ -7,3 +7,12 @@ SELECT
     YEAR(CURDATE()) AS current_year
 FROM
     employees;
+
+-- Task 2.2
+
+SELECT
+    id,
+    name,
+    price,
+    discount_by(price, 15) AS discounted_by_15
+FROM products;
