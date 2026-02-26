@@ -1,0 +1,3 @@
+CREATE FUNCTION IF NOT EXISTS get_employee_exp(hire_date DATE)
+RETURNS INT
+RETURN YEAR(hire_date) - YEAR(CURDATE());
