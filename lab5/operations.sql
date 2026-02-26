@@ -21,4 +21,15 @@ FROM products;
 
 SELECT department INTO @ex_dep FROM employees LIMIT 1;
 CALL get_employee_count_by_dep(@ex_dep, @ex_emp_count);
-SELECT @ex_dep AS example_dep_name, @ex_emp_count AS employee_count;
+
+SELECT
+    @ex_dep AS example_dep_name,
+    @ex_emp_count AS employee_count;
+
+-- Verify
+SELECT
+    COUNT(*)
+FROM
+    employees
+WHERE
+    department = @ex_dep;
