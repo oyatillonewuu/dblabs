@@ -24,6 +24,7 @@ END//
 DELIMITER ;
 
 -- Task 2.3
+
 DELIMITER //
 
 CREATE PROCEDURE IF NOT EXISTS get_employee_count_by_dep(department VARCHAR(50), OUT count INT)
