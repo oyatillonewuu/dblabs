@@ -48,23 +48,43 @@ CREATE PROCEDURE IF NOT EXISTS change_category(IN product_id INT, IN new_cat_id 
 proc_label:BEGIN
     DECLARE cat_id INT DEFAULT NULL;
     DECLARE prod_id INT DEFAULT NULL;
-    DECLARE exit INT DEFAULT 0;
+    DECLARE old_cat_id INT DEFAULT NULL;
+    DECLARE terminate INT DEFAULT 0;
 
     SELECT id INTO cat_id FROM categories WHERE id = new_cat_id;
-    SELECT id INTO prod_id FROM products WHERE id = product_id;
+    SELECT
+        id,
+        category_id INTO prod_id, old_cat_ID
+    FROM
+        products
+    WHERE id = product_id;
+
 
     IF cat_id IS NULL THEN
         SELECT CONCAT("Category with ID = ", new_cat_id, " does not exist.") AS message;
-        exit = 1;
-    END IF;
-    IF prod_id IS NULL THEN
-        SELECT CONCAT("Product with ID = ", product_id, " does not exist.") AS message;
-        exit = 1;
+        SET terminate = 1;
     END IF;
 
-    IF exit = 1 THEN
+    IF prod_id IS NULL THEN
+        SELECT CONCAT("Product with ID = ", product_id, " does not exist.") AS message;
+        SET terminate = 1;
+    END IF;
+
+    IF terminate = 1 THEN
         LEAVE proc_label;
     END IF;
+
+    UPDATE products
+    SET category_id = cat_id
+    WHERE products.id = prod_id;
+
+    SELECT CONCAT(
+        "Product [",
+        prod_id,
+        "] moved from category [",
+        old_cat_id,
+        "] to category [", cat_id, "]"
+    ) AS message;
 
 END//
 

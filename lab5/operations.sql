@@ -33,3 +33,8 @@ FROM
     employees
 WHERE
     department = @ex_dep;
+
+-- Task 2.4
+
+CALL change_category(1, 3);
+SELECT * FROM products WHERE id = 1;
