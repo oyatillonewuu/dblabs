@@ -87,6 +87,7 @@ UPDATE products SET price = -256 WHERE id = @ex_id;
 UPDATE products SET stock = -256 WHERE id = @ex_id;
 
 -- Task 3.4
+
 SELECT @ex_id := id FROM products WHERE stock > 5 LIMIT 1;
 SELECT @ex_emp_id := id FROM employees LIMIT 1;
 
@@ -105,3 +106,60 @@ VALUES
     (@ex_id, @ex_emp_id, CURDATE(), 3000000, 10.0);
 
 SELECT id, stock AS stock_after_invalid_attempt FROM products WHERE id = @ex_id;
+
+-- Task 4.1
+
+SELECT
+    id,
+    name,
+    department,
+    salary,
+    RANK()
+        OVER (
+            PARTITION BY department
+            ORDER BY salary DESC
+        ) AS dept_rank
+FROM employees;
+
+-- Task 4.2
+
+SELECT
+    id,
+    name,
+    salary,
+    RANK()
+        OVER (ORDER BY salary DESC) AS salary_rank
+FROM employees;
+
+SELECT
+    id,
+    name,
+    salary,
+    DENSE_RANK()
+        OVER (ORDER BY salary DESC) AS salary_rank
+FROM employees;
+
+SELECT
+    id,
+    name,
+    salary,
+    ROW_NUMBER()
+        OVER (ORDER BY salary DESC) AS salary_rank
+FROM employees;
+
+-- Task 4.3
+
+WITH ranked_employees AS (
+    SELECT
+        id,
+        name,
+        salary,
+        department,
+        RANK()
+            OVER (
+                PARTITION BY department
+                ORDER BY salary DESC
+            ) AS dept_rank
+    FROM employees
+)
+SELECT * FROM ranked_employees WHERE dept_rank = 1;
