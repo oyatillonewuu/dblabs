@@ -89,9 +89,3 @@ proc_label:BEGIN
 END//
 
 DELIMITER ;
-
--- Task 3 helper
-CREATE FUNCTION IF NOT EXISTS make_nonneg(value INT)
-RETURNS INT
-DETERMINISTIC
-RETURN IF(value >= 0, value, 0);
