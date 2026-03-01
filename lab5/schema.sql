@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS employees (
-    id INT,
+    id INT AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     manager_id INT,
     department VARCHAR(50) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS employees (
 );
 
 CREATE TABLE IF NOT EXISTS categories (
-    id INT,
+    id INT AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     parent_id INT,
 
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS categories (
 );
 
 CREATE TABLE IF NOT EXISTS products (
-    id INT,
+    id INT AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     category_id INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 CREATE TABLE IF NOT EXISTS sales (
-    id INT,
+    id INT AUTO_INCREMENT,
     product_id INT NOT NULL,
     employee_id INT NOT NULL,
     sale_date DATE NOT NULL,
@@ -50,12 +50,12 @@ CREATE TABLE IF NOT EXISTS sales (
 );
 
 CREATE TABLE IF NOT EXISTS price_history (
-    id INT,
+    id INT AUTO_INCREMENT,
     product_id INT NOT NULL,
     old_price DECIMAL(10, 2) NOT NULL,
     new_price DECIMAL(10, 2) NOT NULL,
     change_date DATETIME NOT NULL,
-    changed_by VARCHAR(50) NOT NULL,
+    changed_by VARCHAR(50) NOT NULL DEFAULT 'system', -- I had to give value. Otherwise, the triggers are not working
 
     PRIMARY KEY (id),
     FOREIGN KEY (product_id)
