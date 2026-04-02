@@ -21,7 +21,11 @@ ORDER BY
 
 - T1.c
 
-SELECT tag_name
+SELECT *
 FROM tag_styles
 WHERE
-    (SELECT FROM JSON_CONTAINTS_PATH(style_config, "$.border-radius")) = 1;
+    JSON_CONTAINS_PATH(
+        style_config,
+        'all',
+        '$.borderRadius'
+    ) = 1;
