@@ -29,3 +29,17 @@ WHERE
         'all',
         '$.borderRadius'
     ) = 1;
+
+- T1.d
+
+SELECT
+    style_config->>'$.background' AS background_color,
+    style_config->>'$.background' AS padding
+FROM
+    tag_styles
+WHERE
+    tag_name = "submit_button"
+    AND
+    app_type = "mobile"
+    AND
+    user_role = "viewer";
