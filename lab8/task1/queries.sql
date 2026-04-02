@@ -1,5 +1,5 @@
 
-- T1.a
+-- T1.a
 
 SELECT style_config
 FROM tag_styles
@@ -8,7 +8,7 @@ WHERE
     AND
     user_role = 'admin';
 
-- T1.b
+-- T1.b
 
 SELECT style_config
 FROM tag_styles
@@ -19,7 +19,7 @@ WHERE
 ORDER BY
     priority DESC;
 
-- T1.c
+-- T1.c
 
 SELECT *
 FROM tag_styles
@@ -30,7 +30,7 @@ WHERE
         '$.borderRadius'
     ) = 1;
 
-- T1.d
+-- T1.d
 
 SELECT
     style_config->>'$.background' AS background_color,
@@ -38,8 +38,21 @@ SELECT
 FROM
     tag_styles
 WHERE
-    tag_name = "submit_button"
+    tag_name = 'submit_button'
     AND
-    app_type = "mobile"
+    app_type = 'mobile'
     AND
-    user_role = "viewer";
+    user_role = 'viewer';
+
+-- T1.e
+
+UPDATE
+    tag_styles
+SET
+    style_config = JSON_SET(style_config, '$.hover.transform', 'scale(1.02)')
+WHERE
+    tag_name = 'submit_button'
+    AND
+    app_type = 'web'
+    AND
+    user_role = 'admin';
