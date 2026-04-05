@@ -11,7 +11,7 @@ CREATE TABLE restaurants_float (
 CREATE TABLE restaurants_spatial (
     id          INT AUTO_INCREMENT,
     name        VARCHAR(100),
-    location    POINT NOT NULL,
+    location    POINT NOT NULL SRID 4326,
     cuisine     VARCHAR(50),
 
     PRIMARY KEY (id),
