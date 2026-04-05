@@ -11,18 +11,17 @@ SELECT
     )) AS distance_meters
 FROM restaurants_float;
 
--- Using Spatial Functions on Point
+-- Using spatial functions on Point
 
-SET @campus = Point(37.7749, -122.4194); -- lat/lng
+SET @campus = ST_GeomFromText('Point(37.7749 -122.4194)', 4326); -- lat/lng
 
 SELECT name,
-    ST_Distance_Sphere( -- expects Point(lng, lat)
-        Point(ST_Y(@campus), ST_X(@campus)),
-        Point(ST_Y(location), ST_X(location))
-    ) AS distance_meters
+    ST_Distance_Sphere(location, campus) AS distance_meters
 FROM restaurants_spatial;
 
 -- T.2.b
+
+-- Float version
 
 SELECT
     name,
@@ -37,13 +36,11 @@ ORDER BY
     distance_meters
 LIMIT 3;
 
+-- Using spatial functions on Point
 -- Note: this requires @campus variable.
 
 SELECT name,
-    ST_Distance_Sphere( -- expects Point(lng, lat)
-        Point(ST_Y(@campus), ST_X(@campus)),
-        Point(ST_Y(location), ST_X(location))
-    ) AS distance_meters
+    ST_Distance_Sphere(location, campus) AS distance_meters
 FROM
     restaurants_spatial
 ORDER BY
