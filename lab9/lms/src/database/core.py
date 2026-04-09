@@ -1,3 +1,7 @@
+from types import CoroutineType
+
+from mysql.connector.aio.abstracts import MySQLConnectionAbstract
+from mysql.connector.aio.pooling import PooledMySQLConnection
 from src.config import get_db_config, DbConfig
 from mysql.connector.aio import connect as mysql_aio_connect
 from mysql.connector.errors import DatabaseError, ProgrammingError
@@ -7,13 +11,13 @@ from src.exceptions import DbException
 class MySQLDB:
     def __init__(self, config: DbConfig):
         self.config = config
-        self.conn = None
+        self._conn: MySQLConnectionAbstract | PooledMySQLConnection | None = None
 
     async def connect(self):
-        if self.conn is not None:
+        if self._conn is not None:
             raise DbException("Cannot open connection: connection already exists.")
         try:
-            self.conn = await mysql_aio_connect(**self.config.model_dump())
+            self._conn = await mysql_aio_connect(**self.config.model_dump())
         except ProgrammingError as e:
             raise DbException(f"Connection error: Programming error: {e}")
         except DatabaseError as e:
@@ -22,8 +26,14 @@ class MySQLDB:
             raise DbException(f"Connection error: unknown error occurred: {e}")
 
     async def close(self):
-        if self.conn is not None:
-            await self.conn.close()
-        self.conn = None
+        if self._conn is not None:
+            await self._conn.close()
+        self._conn = None
+
+    @property
+    def conn(self) -> MySQLConnectionAbstract | PooledMySQLConnection:
+        if self._conn is None:
+            raise DbException("Cannot retrieve connection: no open connection.")
+        return self._conn
 
 db: MySQLDB = MySQLDB(get_db_config())

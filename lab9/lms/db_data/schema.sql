@@ -3,5 +3,7 @@ CREATE TABLE IF NOT EXISTS students (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     major VARCHAR(50) NOT NULL,
-    year INT NOT NULL
+    year INT NOT NULL,
+
+    PRIMARY KEY (id)
 );
