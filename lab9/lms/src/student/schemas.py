@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, EmailStr, Field
 
 
@@ -17,10 +18,7 @@ class StudentCreate(BaseModel):
 
 
 class StudentUpdate(BaseModel):
-    name: str | None = Field(max_length=100)
-    email: EmailStr | None
-    major: str | None = Field(max_length=50)
-    year: int | None = Field(gt=0)
+    name: Optional[str] = Field(max_length=100)
 
 
 class StudentList(BaseModel):
