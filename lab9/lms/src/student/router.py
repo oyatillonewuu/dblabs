@@ -23,22 +23,18 @@ async def get_student(student_id: int):
 @api.post("/create")
 async def create_student(student_data: Annotated[StudentCreate, Body()]):
     student_id: int = await service.create_student(student_data)
-    return {
-        "student_id": student_id,
-        "message": "Successfully created."
-    }
+    return {"student_id": student_id, "message": "Successfully created."}
 
 
 @api.patch("/{student_id}/update")
-async def update_student(student_id: int, update_data: Annotated[StudentUpdate, Body()]):
-    await service.create_student(update_data)
+async def update_student(
+    student_id: int, update_data: Annotated[StudentUpdate, Body()]
+):
+    await service.update_student(student_id, update_data)
     return {"message": "Successfully updated."}
 
 
 @api.delete("/{student_id}/delete")
 async def delete_student(student_id: int):
     await service.delete_student(student_id)
-    return {
-        "student_id": student_id,
-        "message": "Successfully deleted."
-    }
+    return {"student_id": student_id, "message": "Successfully deleted."}

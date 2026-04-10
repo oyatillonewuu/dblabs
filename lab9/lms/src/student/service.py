@@ -1,9 +1,13 @@
-from fastapi import HTTPException
-
 from src.schemas import PagingParams
 from src.student import repository
-from src.student.schemas import Student, StudentCreate, StudentUpdate, StudentList
-from .exceptions import StudentDoesNotExist, StudentDeleteFailure, StudentDeleteFailureHTTP, StudentDoesNotExistHTTP
+from src.student.schemas import Student, StudentCreate, StudentList, StudentUpdate
+
+from .exceptions import (
+    StudentDeleteFailure,
+    StudentDeleteFailureHTTP,
+    StudentDoesNotExist,
+    StudentDoesNotExistHTTP,
+)
 
 
 async def get_students(paging_params: PagingParams) -> StudentList:
@@ -30,11 +34,10 @@ async def get_student(student_id: int) -> Student:
         raise StudentDoesNotExistHTTP(student_id)
 
 
-async def delete_student(student_id: int) -> Student:
+async def delete_student(student_id: int):
     try:
-        await repository.delete_student()
+        await repository.delete_student(student_id)
     except StudentDoesNotExist:
         raise StudentDoesNotExistHTTP(student_id)
     except StudentDeleteFailure:
         raise StudentDeleteFailureHTTP(student_id)
-    

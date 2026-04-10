@@ -18,7 +18,7 @@ def create_insert_stmt(*, table: str, kvs: dict[str, Any]) -> str:
 def create_select(
     *, table: str, columns: Optional[tuple[str, ...]] = None, filters: str = ""
 ) -> str:
-    columns_str: str = "" if columns is None else ",".join(columns)
+    columns_str: str = "*" if columns is None else ",".join(columns)
 
     stmt = f"""
         SELECT {columns_str}
@@ -27,9 +27,8 @@ def create_select(
     """
     return stmt
 
-def create_delete(
-    *, table: str, filters: str = ""
-) -> str:
+
+def create_delete(*, table: str, filters: str = "") -> str:
 
     stmt = f"""
         DELETE FROM {table}
@@ -39,9 +38,9 @@ def create_delete(
 
 
 def create_update_stmt(*, table: str, kvs: dict[str, Any], filters: str = "") -> str:
-    kvs: list[str] = build_kv_equality_list(kvs)
+    kvs_eq_pairs: list[str] = build_kv_equality_list(kvs)
 
-    kvs_str: str = ", ".join(kvs)
+    kvs_str: str = ", ".join(kvs_eq_pairs)
 
     stmt = f"""
         UPDATE {table}
