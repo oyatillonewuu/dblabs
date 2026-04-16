@@ -20,8 +20,8 @@
 
 # Initialize file paths.
 
-logs_path = "<path>"
-output_path = "<path>"
+logs_path = "server_logs.log"
+output_path = "ip_count.json"
 
 # Load the records from the file to spark.
 
