@@ -1,0 +1,31 @@
+product_id	customer_id	time_id	datetime_value
+1	1	1	2024-01-05 09:15:00
+2	1	2	2024-01-12 14:30:00
+3	2	2	2024-01-12 14:30:00
+4	2	8	2024-04-18 15:30:00
+4	3	3	2024-02-03 11:00:00
+5	3	8	2024-04-18 15:30:00
+2	4	4	2024-02-20 16:45:00
+5	4	5	2024-03-08 10:20:00
+1	5	6	2024-03-15 13:00:00
+3	5	7	2024-04-02 09:50:00
+product_id	customer_id	time_id	product_name	sold_at
+1	1	1	Laptop	2024-01-05 09:15:00
+1	5	6	Laptop	2024-03-15 13:00:00
+name	sales_count
+Laptop	2
+Mouse	2
+Keyboard	2
+Monitor	2
+Headset	2
+name	month	sales_count
+Laptop	January	1
+Laptop	March	1
+Mouse	January	1
+Mouse	February	1
+Keyboard	January	1
+Keyboard	April	1
+Monitor	April	1
+Monitor	February	1
+Headset	April	1
+Headset	March	1
